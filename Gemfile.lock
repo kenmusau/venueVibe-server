@@ -71,6 +71,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    bcrypt (3.1.19)
     builder (3.2.4)
     case_transform (0.2)
       activesupport
@@ -81,6 +82,8 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -172,7 +175,9 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.2)
+  bcrypt (~> 3.1.7)
   debug
+  faker
   pg
   puma (~> 5.0)
   rails (~> 7.0.8)
