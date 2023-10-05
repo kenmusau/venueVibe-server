@@ -1,52 +1,51 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[ show update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
+  # before_action :set_booking, only: %i[ show update destroy ]
 
   # GET /bookings
   def index
-    @bookings = Booking.all
-
-    render json: @bookings
+    render json: Booking.all
   end
 
   # GET /bookings/1
   def show
-    render json: @booking
+    render json: find_booking
   end
 
   # POST /bookings
   def create
-    @booking = Booking.new(booking_params)
-
-    if @booking.save
-      render json: @booking, status: :created, location: @booking
-    else
-      render json: @booking.errors, status: :unprocessable_entity
-    end
+    booking = Booking.create!(booking_params)
+    render json: booking, status: :created
   end
 
   # PATCH/PUT /bookings/1
   def update
-    if @booking.update(booking_params)
-      render json: @booking
-    else
-      render json: @booking.errors, status: :unprocessable_entity
-    end
+    booking = find_booking
+    booking.update!(booking_params)
+    render json: booking
   end
 
   # DELETE /bookings/1
   def destroy
-    @booking.destroy
+    booking = find_booking
+    booking.destroy
+    head :no_content
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_booking
-    @booking = Booking.find(params[:id])
+  def find_booking
+    Booking.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def booking_params
     params.require(:booking).permit(:status, :check_in, :check_out, :space_id, :client_id)
+  end
+
+  def render_not_found_response
+    render json: { error: "No booking not found" }, status: :not_found
   end
 end
