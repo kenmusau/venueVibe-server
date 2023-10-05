@@ -1,52 +1,50 @@
 class PaymentsController < ApplicationController
   # before_action :set_payment, only: %i[ show update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   # GET /payments
   def index
-    @payments = Payment.all
-
-    render json: @payments
+    render json: Payment.all
   end
 
   # GET /payments/1
   def show
-    render json: @payment
+    render json: find_payment
   end
 
   # POST /payments
   def create
-    @payment = Payment.new(payment_params)
-
-    if @payment.save
-      render json: @payment, status: :created, location: @payment
-    else
-      render json: @payment.errors, status: :unprocessable_entity
-    end
+    payment = Payment.create!(payment_params)
+    render json: @payment, status: :created
   end
 
   # PATCH/PUT /payments/1
   def update
-    if @payment.update(payment_params)
-      render json: @payment
-    else
-      render json: @payment.errors, status: :unprocessable_entity
-    end
+    payment = find_payment
+    payment.update!(payment_params)
+    render json: @payment
   end
 
   # DELETE /payments/1
   def destroy
-    @payment.destroy
+    payment = find_payment
+    payment.destroy
+    head :no_content
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_payment
-    @payment = Payment.find(params[:id])
+  def find_payment
+    Payment.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def payment_params
     params.require(:payment).permit(:amount, :booking_id, :payment_date, :status)
+  end
+
+  def render_not_found_response
+    render json: { error: "Payment not found" }, status: :not_found
   end
 end
