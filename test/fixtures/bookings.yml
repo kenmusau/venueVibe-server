@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: false
+  check_in: 2023-10-05 23:40:43
+  check_out: 2023-10-05 23:40:43
+  spaces: one
+  client: one
+
+two:
+  status: false
+  check_in: 2023-10-05 23:40:43
+  check_out: 2023-10-05 23:40:43
+  spaces: two
+  client: two
