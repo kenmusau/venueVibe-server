@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_30_202510) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_05_211325) do
   create_table "admins", force: :cascade do |t|
     t.string "username"
     t.string "first_name"
@@ -22,6 +22,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_202510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.boolean "status"
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.integer "space_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["space_id"], name: "index_bookings_on_space_id"
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "username"
     t.string "first_name"
@@ -31,6 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_202510) do
     t.string "profile_picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "booking_id", null: false
+    t.datetime "payment_date"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -49,6 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_202510) do
     t.index ["client_id"], name: "index_spaces_on_client_id"
   end
 
+  add_foreign_key "bookings", "clients"
+  add_foreign_key "bookings", "spaces"
+  add_foreign_key "payments", "bookings"
   add_foreign_key "spaces", "admins"
   add_foreign_key "spaces", "clients"
 end

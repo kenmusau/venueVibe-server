@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  booking: one
+  payment_date: 2023-10-05 23:47:14
+  status: false
+
+two:
+  amount: 1
+  booking: two
+  payment_date: 2023-10-05 23:47:14
+  status: false
