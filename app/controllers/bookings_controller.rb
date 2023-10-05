@@ -39,13 +39,14 @@ class BookingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def booking_params
-      params.require(:booking).permit(:status, :check_in, :check_out, :spaces_id, :client_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def booking_params
+    params.require(:booking).permit(:status, :check_in, :check_out, :space_id, :client_id)
+  end
 end
