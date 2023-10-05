@@ -34,12 +34,11 @@ class PaymentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def find_payment
     Payment.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  # Only listed params allowed allowed.
   def payment_params
     params.require(:payment).permit(:amount, :booking_id, :payment_date, :status)
   end
