@@ -13,7 +13,7 @@ puts "seeding....🌱"
 
 # Admins seed data
 Admin.create(username: "admin1", first_name: "John", last_name: "Doe", email: "admin1@example.com", password: "password", profile_picture: "admin1_profile.jpg")
-Admin.create(username: "admin2", first_name: "Jane", last_name: "Smith", email: "admin2@example.com", password: "password", profile_picture: "admin2_profile.jpg")
+# Admin.create(username: "admin2", first_name: "Jane", last_name: "Smith", email: "admin2@example.com", password: "password", profile_picture: "admin2_profile.jpg")
 # ... Add more admins if needed
 
 # Clients seed data
