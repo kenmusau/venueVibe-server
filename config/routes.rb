@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post "/adminlogin", to: "admin_sessions#create"
   delete "/adminlogout", to: "admin_sessions#destroy"
 
+  post "/clientlogin", to: "client_sessions#create"
+  delete "/clientlogout", to: "client_sessions#destroy"
+
   resources :payments
   resources :bookings
   resources :spaces

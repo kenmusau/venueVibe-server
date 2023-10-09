@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :authorize
+  before_action :admin_authorize
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   # GET /admins
@@ -48,7 +48,7 @@ class AdminsController < ApplicationController
     render json: { error: "Doctor not found" }, status: :not_found
   end
 
-  def authorize
+  def admin_authorize
     render json: { errors: ["Not Authorized"] }, status: :unauthorized unless session.include? :admin_id
   end
 end
