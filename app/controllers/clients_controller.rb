@@ -32,8 +32,8 @@ class ClientsController < ApplicationController
   private
 
   def find_client
-    # Client.find(params[:id])
-    Client.find(session[:client_id])
+    Client.find(params[:id])
+    # Client.find(session[:client_id])
   end
 
   def client_params
