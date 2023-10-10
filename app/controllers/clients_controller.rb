@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    render json: Client.find(session[:client_id])
+    render json: Client.find_by(id: session[:client_id])
   end
 
   def create
