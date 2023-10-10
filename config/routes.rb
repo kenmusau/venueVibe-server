@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   # Admin routes
-  # get "/adminSignup", to: "admins/create"
+  # get "/adminSignup", to: "admins#create"
+
+  # session routes
+  # admin
   post "/adminlogin", to: "admin_sessions#create"
   delete "/adminlogout", to: "admin_sessions#destroy"
 
-  post "/clientlogin", to: "client_sessions#create"
-  delete "/clientlogout", to: "client_sessions#destroy"
+  # Client
+  post "/clientSignup", to: "clients#create"
+  post "/clientLogin", to: "client_sessions#create"
+  delete "/clientLogout", to: "client_sessions#destroy"
 
   resources :payments
   resources :bookings
