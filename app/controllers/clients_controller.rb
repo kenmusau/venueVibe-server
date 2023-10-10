@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  before_action :authorize_client
 
   def index
     render json: Client.all
@@ -40,5 +41,9 @@ class ClientsController < ApplicationController
 
   def render_not_found_response
     render json: { error: "Client not found" }, status: :not_found
+  end
+
+  def authorize_client
+    render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :client_id
   end
 end
