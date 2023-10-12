@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mpesas
   # Admin routes
   # get "/adminSignup", to: "admins#create"
 
