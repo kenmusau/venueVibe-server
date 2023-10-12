@@ -9,10 +9,11 @@ Rails.application.routes.draw do
 
   # Client
   post "/clientSignup", to: "clients#create"
-  post "/clientLogin", to: "client_sessions#create"
-  delete "/clientLogout", to: "client_sessions#destroy"
 
-  get "/loggedInClient", to: "clients#show"
+  post "/login", to: "client_sessions#create"
+  delete "/logout", to: "client_sessions#destroy"
+  # get "/loggedInClient", to: "clients#show"
+  get "/me", to: "client_sessions#show"
 
   resources :payments
   resources :bookings
