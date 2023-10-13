@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :admins, only: [:index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-#mpesa route
-post 'stkpush', to: 'mpesas#stkpush'
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
