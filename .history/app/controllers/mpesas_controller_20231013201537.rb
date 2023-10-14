@@ -75,3 +75,4 @@ class MpesasController < ApplicationController
         end
         render json: response
     end
+end
