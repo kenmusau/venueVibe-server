@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   post "/login", to: "client_sessions#create"
   delete "/logout", to: "client_sessions#destroy"
-  # get "/loggedInClient", to: "clients#show"
-  get "/me", to: "client_sessions#show"
+  # get "/me", to: "client_sessions#show"
+  get "/me", to: "client_sessions#auto_login"
 
   resources :payments
   resources :bookings
