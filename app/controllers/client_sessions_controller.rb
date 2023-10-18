@@ -1,9 +1,13 @@
 class ClientSessionsController < ApplicationController
+  before_action :authorize_client
+  skip_before_action :authorize_client, only: [:create, :show, :auto_login, :destroy]
+
   def create
     client = Client.find_by(username: params[:username])
 
     if client&.authenticate(params[:password])
-      log_in(client)
+      # log_in(client)
+      session[:client_id] = client.id
       puts "Session client_id login: #{session[:client_id]}"
       render json: client, status: :created
     else
@@ -30,6 +34,12 @@ class ClientSessionsController < ApplicationController
   def destroy
     session.delete :client_id
     head :no_content
+  end
+
+  private
+
+  def authorize_client
+    render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :client_id
   end
 end
 
