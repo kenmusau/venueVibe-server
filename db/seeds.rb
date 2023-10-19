@@ -29,7 +29,7 @@ image_urls = ["https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixli
     name: Faker::Fantasy::Tolkien.location,
     location: Faker::Address.street_address,
     price: Faker::Commerce.price,
-    status: [true, false].sample,
+    status: false,
     image: image_urls.sample,
     description: Faker::Lorem.paragraph,
     contact: Faker::PhoneNumber.phone_number,
@@ -39,23 +39,23 @@ image_urls = ["https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixli
 end
 
 # Seed data for bookings
-10.times do
-  Booking.create(
-    status: [true, false].sample,
-    check_in: Faker::Time.between_dates(from: Date.today - 30, to: Date.today + 30, period: :day),
-    check_out: Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 60, period: :day),
-    space_id: rand(1..Space.count),
-    client_id: rand(1..Client.count),
-  )
-end
+# 10.times do
+#   Booking.create(
+#     status: [true, false].sample,
+#     check_in: Faker::Time.between_dates(from: Date.today - 30, to: Date.today + 30, period: :day),
+#     check_out: Faker::Time.between_dates(from: Date.today + 1, to: Date.today + 60, period: :day),
+#     space_id: rand(1..Space.count),
+#     client_id: rand(1..Client.count),
+#   )
+# end
 
-10.times do
-  Payment.create(
-    amount: Faker::Number.between(from: 50, to: 500),
-    booking_id: rand(1..Booking.count),
-    payment_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-    status: [true, false].sample,
-  )
-end
+# 10.times do
+#   Payment.create(
+#     amount: Faker::Number.between(from: 50, to: 500),
+#     booking_id: rand(1..Booking.count),
+#     payment_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+#     status: [true, false].sample,
+#   )
+# end
 
 puts "🌱🌱...seeding completed "

@@ -42,7 +42,7 @@ class BookingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.require(:booking).permit(:status, :check_in, :check_out, :space_id, :client_id)
+    params.require(:booking).permit(:status, :check_in, :check_out, :space_id, :client_id, :amount)
   end
 
   def render_not_found_response
