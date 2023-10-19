@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_194258) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_163156) do
   create_table "admins", force: :cascade do |t|
     t.string "username"
     t.string "first_name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_194258) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "phone_number"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 

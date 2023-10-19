@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # admin
   post "/adminlogin", to: "admin_sessions#create"
   delete "/adminlogout", to: "admin_sessions#destroy"
+  get "/autoLogInDoc", to: "admins#show"
 
   # Client
   post "/clientSignup", to: "clients#create"

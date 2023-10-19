@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
 
   # Only listed params allowed allowed.
   def payment_params
-    params.require(:payment).permit(:amount, :booking_id, :payment_date, :status)
+    params.require(:payment).permit(:amount, :booking_id, :payment_date, :status, :phone_number)
   end
 
   def render_not_found_response
