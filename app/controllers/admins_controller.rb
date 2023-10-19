@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :authorize_admin
+  # before_action :authorize_admin
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   # GET /admins

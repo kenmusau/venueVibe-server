@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  before_action :authorize_client
-  skip_before_action :authorize_client, only: [:create, :show, :update]
+  # before_action :authorize_client
+  # skip_before_action :authorize_client, only: [:create, :show, :update]
 
   def index
     render json: Client.all
