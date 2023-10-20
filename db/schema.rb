@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_122019) do
   create_table "access_tokens", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -62,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
     t.string "mpesaReceiptNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booking_id"
+    t.index ["booking_id"], name: "index_mpesas_on_booking_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -93,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
 
   add_foreign_key "bookings", "clients"
   add_foreign_key "bookings", "spaces"
+  add_foreign_key "mpesas", "bookings"
   add_foreign_key "payments", "bookings"
   add_foreign_key "spaces", "admins"
   add_foreign_key "spaces", "clients"

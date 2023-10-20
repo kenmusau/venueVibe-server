@@ -28,7 +28,7 @@ image_urls = ["https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixli
   Space.create(
     name: Faker::Fantasy::Tolkien.location,
     location: Faker::Address.street_address,
-    price: Faker::Commerce.price,
+    price: 1,
     status: false,
     image: image_urls.sample,
     description: Faker::Lorem.paragraph,
