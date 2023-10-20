@@ -1,13 +1,15 @@
 class ClientsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  before_action :authorize_client
-  skip_before_action :authorize_client, only: [:create]
+  # before_action :authorize_client
+  # skip_before_action :authorize_client, only: [:create, :show, :update]
 
   def index
     render json: Client.all
   end
 
   def show
+    # puts "Session client_id: #{session[:client_id]}"
+
     render json: Client.find_by(id: session[:client_id])
   end
 
@@ -19,8 +21,9 @@ class ClientsController < ApplicationController
 
   def update
     client = find_client
+    # client.update_attribute!(client_params)
     client.update!(client_params)
-    render json: client
+    render json: client, status: :accepted
   end
 
   def destroy

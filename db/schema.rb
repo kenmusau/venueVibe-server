@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
   create_table "access_tokens", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -36,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
     t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
     t.index ["client_id"], name: "index_bookings_on_client_id"
     t.index ["space_id"], name: "index_bookings_on_space_id"
   end
@@ -68,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_233130) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "phone_number"
     t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 

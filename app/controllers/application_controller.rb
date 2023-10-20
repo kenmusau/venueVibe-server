@@ -3,6 +3,18 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+  def log_in(client)
+    session[:client_id] = client.id
+  end
+
+  def current_client
+    Client.find_by(id: session[:client_id])
+  end
+
+  def logged_in?
+    !!current_client
+  end
+
   private
 
   def render_unprocessable_entity_response(invalid)

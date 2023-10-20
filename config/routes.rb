@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   # admin
   post "/adminlogin", to: "admin_sessions#create"
   delete "/adminlogout", to: "admin_sessions#destroy"
+  get "/autoLogInDoc", to: "admins#show"
 
   # Client
   post "/clientSignup", to: "clients#create"
-  post "/clientLogin", to: "client_sessions#create"
-  delete "/clientLogout", to: "client_sessions#destroy"
 
-  get "/loggedInClient", to: "clients#show"
+  post "/login", to: "client_sessions#create"
+  delete "/logout", to: "client_sessions#destroy"
+  # get "/me", to: "client_sessions#show"
+  get "/me", to: "client_sessions#auto_login"
 
   resources :payments
   resources :bookings
