@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mpesas
   # Admin routes
   # get "/adminSignup", to: "admins#create"
 
@@ -22,7 +23,9 @@ Rails.application.routes.draw do
   resources :clients
   resources :admins, only: [:index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+#mpesa route
+post 'stkpush', to: 'mpesas#stkpush'
+post 'stkquery', to: 'mpesas#stkquery'
   # Defines the root path route ("/")
   # root "articles#index"
 end
