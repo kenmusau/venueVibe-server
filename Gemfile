@@ -37,5 +37,4 @@ gem 'faker'
 
 gem 'active_model_serializers', '~> 0.10.2'
 
-gem 'rack-cors'
 gem 'rest-client'
