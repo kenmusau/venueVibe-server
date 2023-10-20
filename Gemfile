@@ -38,3 +38,5 @@ gem 'faker'
 gem 'active_model_serializers', '~> 0.10.2'
 
 gem 'rest-client'
+
+gem 'cloudinary'
