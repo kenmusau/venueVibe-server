@@ -12,6 +12,7 @@ class SpacesController < ApplicationController
 
   def create
     space = Space.create!(space_params)
+    # space.image = Cloudinary::Uploader.upload(params[:image])
     render json: space, status: :created
   end
 
@@ -30,6 +31,7 @@ class SpacesController < ApplicationController
   def update
     space = find_space
     space.update!(space_params)
+    # space.image = Cloudinary::Uploader.upload(params[:image])
     render json: space
   end
 
