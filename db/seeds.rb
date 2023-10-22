@@ -33,8 +33,7 @@ image_urls = ["https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixli
     image: image_urls.sample,
     description: Faker::Lorem.paragraph,
     contact: Faker::PhoneNumber.phone_number,
-    admin_id: rand(1..Admin.count),
-    client_id: rand(1..Client.count),
+    admin_id: rand(1..Admin.count)
   )
 end
 
