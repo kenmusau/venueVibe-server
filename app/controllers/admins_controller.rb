@@ -20,7 +20,7 @@ class AdminsController < ApplicationController
   end
 
   def render_not_found_response
-    render json: { error: "Doctor not found" }, status: :not_found
+    render json: { error: "Admin not found" }, status: :not_found
   end
 
   def authorize_admin
